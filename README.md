@@ -12,6 +12,6 @@
 ### vars
 ```
 cerbot:
-  - { domein: example.com, email: admin@example.com }
-  - { domein: api.example.com, email: admin@example.com }
+  - { domain: example.com, email: admin@example.com }
+  - { domain: api.example.com, email: admin@example.com }
 ```
