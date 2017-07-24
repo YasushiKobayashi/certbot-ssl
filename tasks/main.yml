@@ -10,4 +10,10 @@
   shell:  /usr/local/certbot/certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n
   with_items:
     - "{{ certbot }}"
-  when: certbot is defined
+  when: "certbot is defined and ansible_distribution == 'CentOS'"
+
+- name: get letsencrypt
+  shell:  /usr/local/certbot/certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n --debug
+  with_items:
+    - "{{ certbot }}"
+  when: "certbot is defined and ansible_distribution == 'Amazon'"
