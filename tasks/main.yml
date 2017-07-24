@@ -1,0 +1,11 @@
+---
+
+- name: set certbot
+  git:
+    repo: https://github.com/certbot/certbot
+    dest: /usr/local
+    version: master
+
+- name: get letsencrypt
+  shell:  /usr/local/certbot-auto certonly --standalone -d {{ item.domein }} -m {{ item.email }} --agree-tos -n
+  with_items: {{ certbot }}
