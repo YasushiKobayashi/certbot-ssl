@@ -1,3 +1,6 @@
 - hosts: master
   tasks:
     - include: 'tasks/main.yml'
+
+    - name: test
+      shell: which certbot-auto

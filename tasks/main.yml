@@ -1,19 +1,19 @@
 ---
 
 - name: set certbot
-  git:
-    repo: https://github.com/certbot/certbot
-    dest: /usr/local/certbot
-    version: master
+  get_url:
+    url: https://dl.eff.org/certbot-auto
+    dest: /usr/bin/certbot-auto
+    mode: 0755
 
 - name: get letsencrypt
-  shell:  /usr/local/certbot/certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n
+  shell:  certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n
   with_items:
     - "{{ certbot }}"
   when: "certbot is defined and ansible_distribution == 'CentOS'"
 
 - name: get letsencrypt
-  shell:  /usr/local/certbot/certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n --debug
+  shell:  certbot-auto certonly --standalone -d {{ item.domain }} -m {{ item.email }} --agree-tos -n --debug
   with_items:
     - "{{ certbot }}"
   when: "certbot is defined and ansible_distribution == 'Amazon'"
