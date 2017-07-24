@@ -11,7 +11,7 @@
 
 ### vars
 ```
-cerbot:
+certbot:
   - { domain: example.com, email: admin@example.com }
   - { domain: api.example.com, email: admin@example.com }
 ```
